@@ -1,0 +1,50 @@
+import java.io.*;
+
+import java.net.*;
+
+public class numserver{
+    public static void main (string[] args){
+  int risposta=0;
+        try{
+
+        
+            System.out.println("Connessione Effettuata");   
+            ServerSocket server = new ServerSocket(25); 
+
+            Socket s = server.accept();
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            DataOutputStream out = new DataOutputStream(s.getOutputStream());
+
+            
+
+            while(true){
+
+                int azione = in.readLine();
+        
+                if(azione==4){
+                    System.out.println("inserisci nota da memorizzare:");
+                    String Stringa = scanner.readLine();
+                    risposta=1;
+                }else  if(azione==5){
+                    System.out.println(lista.txt);
+                    risposta=2;
+
+                }else if(azione==6){  
+
+                    risposta=3;
+                  
+                }
+                out.writeBytes(risposta);
+            }
+            
+
+        } catch (Exception e){
+
+            System.out.println(e.getMessage());
+            System.out.println("Errore durante l'instanza del server !");
+            System.out.println(1);
+
+        }
+    }
+}
